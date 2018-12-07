@@ -1,0 +1,19 @@
+class Solution:
+    def anagramMappings(self, A, B):
+        """
+        :type A: List[int]
+        :type B: List[int]
+        :rtype: List[int]
+        """
+        l =[]
+        for i in A:
+            l.append(B.index(i))
+        return l
+        
+        
+        
+       ********Second solution*********
+       
+       
+       
+       
