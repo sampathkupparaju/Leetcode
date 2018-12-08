@@ -1,4 +1,4 @@
-# H1 Tried using Hashmap. The problem arises when we have the same characters in both the strings but differ in quantity.
+ Tried using Hashmap. The problem arises when we have the same characters in both the strings but differ in quantity.
 
 
 class Solution {
