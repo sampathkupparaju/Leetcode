@@ -1,0 +1,26 @@
+Initially I tried to solve this problem using recursion. But for example for 4 stairs could be broken down to 
+                4
+               / \
+              3   2
+             / \
+            2   1
+  We are calculating the number of ways to climb 2 steps 2 times which coule be time counsuming and space inefficient as well.
+  So a bottoms up approach would be creating an array  of size(n+1) and then calcluating the element at position n by providing
+  some initial values.
+  
+  
+  class Solution {
+    public int climbStairs(int n) {
+    
+         int [] a = new int[n+1];
+    a[0]=1;
+    a[1]=1;
+    for(int i=2;i<a.length;i++)
+    {
+        a[i]=a[i-1]+a[i-2];
+    }
+    return a[n];
+   
+
+    }
+}
