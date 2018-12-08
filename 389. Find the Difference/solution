@@ -1,0 +1,54 @@
+# H1 Tried using Hashmap. The problem arises when we have the same characters in both the strings but differ in quantity.
+
+
+class Solution {
+    public char findTheDifference(String s, String t) {
+        
+        
+         char c[] = s.toCharArray();
+    char d[] = t.toCharArray();
+    HashMap<Character, Integer> lop =  new HashMap<Character, Integer>();
+    for (int i =0; i<c.length;i++)
+    {
+        lop.put(c[i], i);
+        
+    }
+    
+    
+    for (char l : d)
+    {
+        if (!lop.containsKey(l))
+          return l;
+        
+    }
+    return 0;
+    
+    }
+}
+
+# H1 Best way to approach this would be to convert character to corresponding ascii values and then tring to find the difference
+# H1 two sums and returning that as a character.
+
+
+class Solution {
+    public char findTheDifference(String s, String t) {
+     char c[] = s.toCharArray();
+    char d[] = t.toCharArray();
+    int sum1=0;
+    int sum2=0;
+    
+    for (char l:c)
+    {
+        sum1 = sum1+l;
+    }
+    for(char x:d)
+    {
+        sum2 = sum2+x;
+    }
+
+    return (char)(sum2-sum1);
+    }
+}
+
+
+
