@@ -1,0 +1,15 @@
+class Solution:
+    def distributeCandies(self, candies):
+        """
+        :type candies: List[int]
+        :rtype: int
+        """
+        l = len(set(candies))
+        k = len(candies)
+        if l<=k/2:
+            return l
+        else:
+            return k//2
+            
+            
+            *****
