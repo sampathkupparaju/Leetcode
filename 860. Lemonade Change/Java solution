@@ -1,0 +1,53 @@
+Simple if and else loops considering all the possible cases.
+
+class Solution {
+    public boolean lemonadeChange(int[] bills) {
+        
+       
+       int numberFives =0;
+        int numberTens =0;
+        for(int i=0;i<bills.length;i++)
+        {
+            if(bills[i]==5)
+                numberFives++;
+                
+            else if(bills[i]==10)
+                if(numberFives>0)
+                {
+                    numberFives--;
+                    numberTens++;
+                    
+                }
+                else {
+                    return false;
+                }
+                
+            else if(bills[i]==20)
+            {
+                if(numberFives>0 && numberTens>0)
+                {
+                    numberFives--;
+                    numberTens--;
+                    
+                }
+                else if(numberTens==0 && numberFives>=3)
+                {
+                    numberFives-=3;
+                    
+                }
+                else {
+                    return false;
+                    
+                }
+                    
+                    
+            }
+           
+              
+            
+                
+                
+        }
+        return true;
+   }
+}
