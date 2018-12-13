@@ -1,0 +1,16 @@
+This is a bit easy.
+we iterate over the binary representation of the digits and take its complement.
+
+
+
+class Solution:
+    def findComplement(self, num):
+        """
+        :type num: int
+        :rtype: int
+        """
+        x = "{0:b}".format(num) 
+        y = ""  #This was a bit difficult for me to come up with
+        for i in x:
+            y+=  str(1- int(i))
+        return int(y,2) # Carefully look into this in the future.
