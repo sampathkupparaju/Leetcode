@@ -1,5 +1,6 @@
 Worst time complexity solution
 Made too much use of inbuilt functions
+\B Could be done by one pass through all or any
 
 class Solution:
     def isMonotonic(self, A):
