@@ -1,0 +1,16 @@
+list slicing and sort method in python. L[-k]
+
+Confusion as which element is to be returned. So I started a set, but later realised that it is not distinct but largest
+
+
+class Solution:
+    def findKthLargest(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        s = sorted(nums)   
+        return s[-k]
+
+
