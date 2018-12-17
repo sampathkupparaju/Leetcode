@@ -1,0 +1,19 @@
+This one took a lot of time for me to figure out.
+
+All I had to do is store the complement of each number in the list as a key in dictionary with indices as values.
+So, for list[0] = num, the key would be (target - num) and the value would be 0
+so when we iterate over the list, we see if the number's complement is present in the dictionary. If not, I would insert the 
+element into the dictionary with key and value as specified above.
+
+
+
+
+class Solution:
+    def twoSum(self, nums, target):
+        result ={}
+        for index, value in enumerate(nums): # generates tuples with index and value
+            if value in result:
+                return [result[value], index] 
+            else:
+                result[target-value]= index # Insert elements
+        return
