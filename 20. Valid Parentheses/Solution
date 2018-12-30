@@ -1,0 +1,34 @@
+This is a very frequently used question to tell the importance of stacks.
+The idea is to push the opposite character into stack.
+Then check the character with the popping element, if not matched return false.
+At the end see if the stack is empty which returns the desired value.
+
+
+
+
+
+
+
+
+
+
+class Solution {
+    public boolean isValid(String s) {
+        
+        Stack<Character> resu = new Stack<Character>();
+			for (char c : s.toCharArray())
+			{
+				if (c =='(')
+					resu.push(')');
+				else if ( c== '{')
+					resu.push('}');
+				else if ( c== '[')
+					resu.push(']');
+				else if(resu.isEmpty() || c!= resu.pop())
+					return false;	
+				
+			}
+        return resu.isEmpty();
+        
+    }
+}
