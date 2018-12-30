@@ -1,0 +1,27 @@
+Not a good solution. This is a brute force approach. The time complexity is achieved but it is supposed to be done without adding 
+space.
+
+
+
+
+
+class Solution:
+    def findMedianSortedArrays(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: float
+
+
+
+"""
+        
+        for number in nums2:
+            nums1.append(number)  
+        s = sorted(nums1)
+        print (s)
+        l = len(s)
+        if l%2 ==0:
+            return (s[l//2] + s[(l//2)-1])/2
+        else:
+            return (s[l//2])
