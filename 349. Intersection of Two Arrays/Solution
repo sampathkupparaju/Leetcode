@@ -1,0 +1,24 @@
+Worst time complexity solution.
+Can be solved using only sets
+
+
+
+return list(set(nums1) &set(nums2))
+
+
+class Solution:
+    def intersection(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        result = {}
+        resultlist = set()
+        for index,value in enumerate(nums1):
+            result[index]=value
+        print(result)
+        for i in nums2:
+            if i in result.values():
+                resultlist.add(i)
+        return list(resultlist)
