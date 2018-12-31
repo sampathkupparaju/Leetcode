@@ -1,0 +1,22 @@
+The idea is to have a count of non zero elements in the array.
+Once we have the count replace all the elements from that count to length of the array to zeros.
+
+
+
+
+
+
+
+class Solution:
+    def moveZeroes(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        count = 0
+        for i in range(len(nums)):
+            if nums[i]!=0:
+                nums[count] = nums[i] # swap the elements
+                count+=1              #need not worry about all the zeros right away.
+        for i in range(count,len(nums)):
+            nums[i]=0
