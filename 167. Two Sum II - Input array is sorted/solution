@@ -1,0 +1,19 @@
+Only new thing is enumerate from start =1
+
+
+
+
+class Solution:
+    def twoSum(self, numbers, target):
+        """
+        :type numbers: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        result ={}
+        for index,value in enumerate(numbers, start =1):
+            if value not in result:
+                result[target - value] =index
+            else:
+                return [result[value],index]
+        return
