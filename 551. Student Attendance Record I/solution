@@ -1,0 +1,19 @@
+I learnt that if you want to check continuous occurance of a particular charcater more than a number, just check once if we have
+one more than that number in the string
+
+
+
+class Solution:
+    def checkRecord(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        count =0
+        for i in s:
+            if i=='A':
+                count+=1
+        if count>1 or "LLL" in s:  # more than twice the student cant be rewarded, so check LLL in string
+            return False
+        return True
+        
