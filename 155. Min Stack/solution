@@ -1,0 +1,59 @@
+This is a stack implementation 
+Only addition is finding the minimum element in the stack dynamically as we add new elements into the stack.
+I tried doing that but felt that handling it as two seperate functions is much easier.
+So I added all the elements and then iterated through the stack to find the minumjum value.
+
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MinStack {
+
+	List<Integer> l ;
+    
+    int s; // This variable is used to get an idea of where are we in the stack.
+    
+    
+	
+	/** initialize your data structure here. */
+    public MinStack() {
+       l =  new ArrayList<>();
+       s =l.size();
+       
+    }
+    
+    public void push(int x) {
+    	l.add(x);
+    	s++;
+    	
+        
+    }
+    
+    public void pop() {
+    	int val = l.remove(s-1);
+    	--s;
+    	
+    	
+        
+    }
+    
+    public int top() {
+        
+        return l.get(s-1);
+        
+    }
+    
+    public int getMin() {
+    	int min =Integer.MAX_VALUE;
+    	for (int i=0;i<s;i++)
+    	{
+    		if(l.get(i)<min)
+    			min = l.get(i);
+            
+            
+    		
+    	}
+        return min;
+    }
+}
