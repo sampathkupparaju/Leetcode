@@ -1,0 +1,36 @@
+1. Scan through the array to find max element and index
+2. Scan again through the array to check if every element is less than twice the max element.
+3. return index of the max element if true else return -1
+
+
+
+
+
+class Solution {
+    public int dominantIndex(int[] nums) {
+        
+        int m =0;
+        int ind =-1;
+        for(int i=0;i<nums.length;i++)
+        {
+            if (nums[i]>=m){
+                m = nums[i];
+                ind =i;
+            }  
+            
+        }
+        for(int i=0;i<nums.length;i++)
+        {
+            if ( i!=ind && 2*nums[i] <= m)               
+                continue;
+            else if(i==ind)
+                continue;
+            else
+                return -1;
+            
+        
+        }
+        
+        return ind;
+    }
+}
