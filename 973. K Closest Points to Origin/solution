@@ -1,0 +1,32 @@
+I have no memory constraint here. So, I created two lists for better understanding
+
+1. Find each point's distance from origin and store it in a list. Sort it.
+2. store the distance as a key and point as a value
+3. return the first K points from the dictionary using the sorted list.
+
+
+
+
+
+class Solution:
+    def kClosest(self, points, K):
+        """
+        :type points: List[List[int]]
+        :type K: int
+        :rtype: List[List[int]]
+        """
+        l =[]
+        li=[]
+        result ={}
+        for point in points:
+            distance =0
+            for i in point:
+                distance = distance +i*i   
+            result[math.sqrt(distance)]=point
+            li.append(math.sqrt(distance))
+        li.sort()
+        for i in range(len(li[:K])):
+            l.append(result[li[i]])
+        return l
+                
+                
