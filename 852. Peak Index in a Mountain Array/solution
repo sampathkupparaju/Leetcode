@@ -1,0 +1,24 @@
+1. Use binary search to find max element in the array or use inbuilt max function and return its index
+2. The problem statement states that the array definitely has a mountain index.
+
+
+
+class Solution:
+    def peakIndexInMountainArray(self, A):
+        """
+        :type A: List[int]
+        :rtype: int
+        """
+    
+        left =0
+        right = len(A)-1
+        while left<=right:
+            middle = (left+right)//2
+            if A[middle+1]<A[middle] and A[middle]>A[middle-1]:
+                return middle
+            elif A[middle]<A[middle+1]:
+                left = middle  
+            elif A[middle]>A[middle+1]:
+                right = middle
+
+            
