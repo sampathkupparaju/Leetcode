@@ -1,0 +1,44 @@
+1. Create a stack of integers and push each integer in the linkedlist to the stack
+2. Now replace each int in the linkedlist starting from head with the elements popped from the stack.
+3. Return the result
+
+
+(Use 2 Variables to point to the head, one for each iteration i.e one for pushing and one for replacing )
+
+
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+         Stack<Integer> s = new Stack<Integer>();
+
+		 ListNode temp = head;
+        if(head == null)
+            return null;
+		  s.push(temp.val);
+		 while(temp.next!=null) {
+			 s.push(temp.next.val);
+			 temp = temp.next;
+			 
+		 }
+       
+		ListNode r = head;
+       
+        
+		while(r!=null){
+          
+		 r.val = s.pop();
+r = r.next;
+          
+       
+            
+             
+        }
+		
+		 
+		
+		 
+		 return head;
+		 
+		 
+    }
+}
