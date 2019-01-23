@@ -1,0 +1,36 @@
+Get the base case right first !!!!!! Either of the trees is null
+
+1. Check to see if either of the TreeNodes is null if yes return the other TreeNode which is not null
+2. Create a new TreeNode result with value as sum of t1 and t2 values
+3. Result TreeNode's left is resultant of recursive travel of t1 and t2 left nodes
+4. Result TreeNode's Right is resultant of recursive travel of t1 and t2 Right nodes
+
+
+
+class Solution {
+    
+    
+    public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+        
+        if (t1 == null && t2 == null) {
+            return null;
+        } else if (t2 == null) {
+            return t1;
+        } else if (t1 == null) {
+            return t2;
+            
+        }
+       TreeNode result = new TreeNode(t1.val+t2.val);
+       if(t1!=null && t2!=null)
+			{
+				
+				result.left = mergeTrees(t1.left,t2.left);
+		     result.right = mergeTrees(t1.right,t2.right);
+				}
+        
+        
+        
+		 return result;
+		 
+    }
+}
