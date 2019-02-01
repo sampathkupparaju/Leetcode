@@ -1,0 +1,25 @@
+1. Declare an empty list
+2. Initialise odd and even as two variables
+3. Iterate through the list and based on whether it is even or odd increment the odd and even varibales
+
+
+class Solution:
+    def sortArrayByParityII(self, A):
+        """
+        :type A: List[int]
+        :rtype: List[int]
+     
+        """
+        result =[0]*len(A)
+        odd = 1
+        even =0
+        for value in A:
+            if value%2 ==0:
+                result[even] = value
+                even =even+2
+            else:
+                result[odd] = value
+                odd = odd+2
+        return result
+        
+        
