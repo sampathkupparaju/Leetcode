@@ -1,0 +1,28 @@
+1. Create a boolean array holding false values
+2. Iterate through the given list 
+        if a value is already True continue
+        else mark it as false
+3. Return the values that are still false
+
+class Solution:
+    def findDisappearedNumbers(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+       
+    
+      
+        return [i for i in range(1,len(nums)+1) if i not in nums]
+        
+         """
+        li =[]
+        result =[False]*(len(nums)+1)
+        for i in nums:
+            if result[i]:
+                continue
+            else:
+                result[i]=True
+        for i in range(1,len(result)):
+            if result[i]==False:
+                li.append(i)
+        return li
