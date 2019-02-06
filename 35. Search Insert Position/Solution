@@ -1,0 +1,29 @@
+Check carefully which index is to be returned.
+
+1. Base conditions are whether the element is greater than right most element or smaller than the first element.
+2. Binary search the list to see if the number at index would be less than or greater than the target element
+3. return the left index
+
+
+class Solution:
+    def searchInsert(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        left =0
+        right = len(nums)-1
+        if nums[right]<target:
+                return right+1
+        elif nums[left]>target:
+                return 0
+        while left<=right:
+            middle = (left + right)//2
+            if nums[middle]>target:
+                right = middle-1
+            elif nums[middle]<target:
+                left = middle+1
+            else:
+                return middle
+        return left      
