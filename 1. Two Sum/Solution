@@ -1,8 +1,8 @@
 This one took a lot of time for me to figure out.
 
-All I had to do is store the complement of each number in the list as a key in dictionary with indices as values.
+1. Store the complement of each number in the list as a key in dictionary with indices as values.
 So, for list[0] = num, the key would be (target - num) and the value would be 0
-so when we iterate over the list, we see if the number's complement is present in the dictionary. If not, I would insert the 
+2. Iterate over the list, we see if the number's complement is already present in the dictionary. If not, insert the 
 element into the dictionary with key and value as specified above.
 
 
