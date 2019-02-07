@@ -1,4 +1,3 @@
-This is a very frequently used question to tell the importance of stacks.
 The idea is to push the opposite character into stack.
 Then check the character with the popping element, if not matched return false.
 At the end see if the stack is empty which returns the desired value.
