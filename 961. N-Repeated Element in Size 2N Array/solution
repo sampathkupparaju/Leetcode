@@ -1,0 +1,16 @@
+1. Create a dictionary with keys as numbers from array and their corresponding counts as values
+2. Iterate through the dictionary and return the key with value greater than once
+
+
+class Solution:
+    def repeatedNTimes(self, A: 'List[int]') -> 'int':
+        result = {}
+        for i in range(len(A)):
+            if A[i] in result:
+                result[A[i]]+=1
+            else:
+                result[A[i]]=1
+        for k,v in result.items():
+            if v>1:
+                return k
+        return
