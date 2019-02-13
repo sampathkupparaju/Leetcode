@@ -1,0 +1,18 @@
+Any Dynamic Programming problem can be solved by dividing it into 3 steps.
+1. Recursion
+2. Memoization and
+3. Bottom up.
+For this problem the recursion would be finding the cost to reach n-1 and n-2 steps and returning the minimum
+Storing in an array would be memoization.
+Return the element which is minimum between the last two steps
+
+class Solution:
+    def minCostClimbingStairs(self, cost):
+        """
+        :type cost: List[int]
+        :rtype: int
+        """
+        cost[0], cost[1] = cost[0], cost[1]
+        for i in range(2,len(cost)):
+            cost[i] = min(cost[i-2]+cost[i], cost[i-1]+cost[i])
+        return min(cost[-2],cost[-1])
