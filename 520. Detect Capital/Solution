@@ -1,0 +1,35 @@
+Find each charcater's ascii values and check for 
+1. If the starting letter is capital and the second letter is capital
+2.      check if all others are capital
+3. Else if starting letter is capital and the second letter is small
+4.       Check if all others are small
+5. If the starting letter is small
+6.       Check if all other letters are small
+
+
+
+
+
+class Solution:
+    def detectCapitalUse(self, word):
+        """
+        :type word: str
+        :rtype: bool
+        """
+        if len(word)==1:
+            return True
+        if ord(word[0])>=65 and ord(word[0])<=90:
+            if ord(word[1])>=97 and ord(word[1])<=122:
+                for i in range(2,len(word)):
+                    if ord(word[i])<97:
+                        return False
+            elif ord(word[1])>=65 and ord(word[1])<=90:
+                for i in range(2,len(word)):
+                    if ord(word[i])>90:
+                        return False
+        elif ord(word[0])>=97 and ord(word[0])<=122:
+            for i in range(1,len(word)):
+                    if ord(word[i])<97:
+                        return False
+        return True
+            
