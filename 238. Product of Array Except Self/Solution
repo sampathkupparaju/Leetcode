@@ -1,6 +1,6 @@
 The idea is to have two arrays
 One to calculate the product of elements above it and the other to have product of elements below it.
-Result willbe the product of both the elements.
+Result willbe the product of both the array elements at the corresponding index.
 
 {              1,         a[0],    a[0]*a[1],    a[0]*a[1]*a[2]  }
 { a[1]*a[2]*a[3],    a[2]*a[3],         a[3],                 1 }
