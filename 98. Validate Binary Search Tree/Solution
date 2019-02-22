@@ -1,0 +1,49 @@
+Traverse the tree using in order traversal.
+This will give us the equivalent of creating a sorted list from the treenode values.
+1. Create a stack.
+2. Add all the left nodes first. Then pop the leftmost element and assign it to previousnode. If the next nodes value is less than 
+  previous node value return false
+  
+  
+  /**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean isValidBST(TreeNode root) {
+       // ArrayList<Integer> x = new ArrayList<>();
+        if(root==null)
+            return true;
+        
+        TreeNode previous = null;
+        
+     Stack<TreeNode> s = new Stack<>();
+     
+     // creates a sorted list of values
+        while(root!=null || !s.isEmpty())
+        {
+            while(root!=null)
+            {
+            s.push(root);
+            root= root.left;
+            }
+            root = s.pop();// pop the left most element and assign it to previous
+                   
+if(previous!=null && root.val<= previous.val) return false; // check to see if the curent value is smaller than the one above it
+            previous = root;
+            root = root.right;
+            
+    
+        }
+        return true;
+        
+        
+
+    
+        
+    }
