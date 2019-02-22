@@ -1,0 +1,21 @@
+The dimensions of the returned array are opposite of the original array ie 
+Original array dimensions will be [A.length][A[0].length]
+Transposed array dimesions will be [A[0].length][A.length]
+Loop accordingly
+
+class Solution {
+    public int[][] transpose(int[][] A) {
+        
+        
+        int[][] B = new int[A[0].length][A.length];
+        for(int i=0;i<A[0].length;i++)
+        {
+            for(int j=0;j<A.length;j++)
+            {
+                B[i][j]= A[j][i];
+            }
+        }
+        
+        return B;
+    }
+}
