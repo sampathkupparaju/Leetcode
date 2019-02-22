@@ -1,0 +1,50 @@
+1. Inorder traversal to get the treenodes values in sorted order.
+2. Store the treenodes in an arraylist
+3. Return the next node which has greater value than the p's value
+
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        ArrayList<TreeNode> x = new ArrayList<>(); 
+        if(root == null)
+            return null;
+        Stack<TreeNode> result = new Stack<>();
+        while(root!=null || !result.isEmpty())
+        {
+            while(root!=null)
+            {
+                result.push(root);
+                root = root.left;
+                
+            }
+            root = result.pop();
+            x.add(root);
+            root = root.right;
+            
+            
+            
+        }
+        
+        
+        for(int i=0;i<x.size()-1;i++)
+        {
+            if(x.get(i).val<p.val)
+                continue;
+            else
+                return x.get(i+1);
+        }
+        
+        return null;
+        
+    }
+}
