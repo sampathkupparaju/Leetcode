@@ -25,9 +25,9 @@ class Solution {
      Stack<TreeNode> s = new Stack<>();
      
      // creates a sorted list of values
-        while(root!=null || !s.isEmpty())
+        while(root!=null || !s.isEmpty()) // As a whole
         {
-            while(root!=null)
+            while(root!=null) // Iterate until all left nodes are traversed.
             {
             s.push(root);
             root= root.left;
