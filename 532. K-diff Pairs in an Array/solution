@@ -1,0 +1,25 @@
+1. Create a dictionary with occurances of each element as values.
+2. If k ==0 check to see if any key has more than 2 occurances. It doesn't matter if it has any number.
+3. Else check to see if any key plus k is already present in result.
+4. Return count
+
+
+class Solution:
+    def findPairs(self, nums: 'List[int]', k: 'int') -> 'int':
+        result= {}
+        if len(nums)==0 or k<0 :
+            return 0
+        count =0
+        for i in nums:
+            if i in result:
+                result[i]+=1
+            else:
+                result[i]=1
+        for key,value in result.items():
+            if k==0:
+                if result[key]>=2:
+                    count+=1
+            else:
+                if key+k in result:
+                    count+=1
+        return count
