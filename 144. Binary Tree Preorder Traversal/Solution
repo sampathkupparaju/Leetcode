@@ -1,0 +1,35 @@
+1. Same as Inorder traversal.
+2. Only difference is where you add the node's value to the list.
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+       ArrayList<Integer> result = new ArrayList<>();
+        if(root ==null)
+            return result;
+        Stack<TreeNode> s = new Stack<>();
+        while(root!=null || !s.isEmpty())
+        {
+            
+
+            while(root!=null)
+                {
+                 result.add(root.val); // We add the nodes values here
+                    s.push(root);         
+                    root = root.left;
+                }
+            root = s.pop();
+            // In inorder tyraversal we add the node's value here
+            root = root.right;
+        }
+        return result;
+    }
+}
