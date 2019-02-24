@@ -1,0 +1,47 @@
+The solution is not space efficient but very efficient in terms of time.
+1. Traverse the tree in inorder fashion to get the sorted list.
+2. Find difference between two consecutive nodes and compare it with a global minimum.
+3. return min difference.
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int minDiffInBST(TreeNode root) {
+        ArrayList<Integer> x = new ArrayList<>();
+        Stack<TreeNode> result = new Stack<>();
+        while(root!=null || !result.isEmpty())
+        {
+            while(root!=null)
+            {
+                result.push(root);
+                root= root.left;
+                
+            }
+            root = result.pop();
+            x.add(root.val);
+            root = root.right;
+            
+        }
+        
+        int minDiff = x.get(1)-x.get(0);
+        if(x.size()==2)
+            return minDiff;
+        for(int i=2;i<x.size();i++)
+        {
+            int diff = x.get(i)-x.get(i-1);
+            minDiff = Math.min(diff,minDiff);
+            
+        }
+        return minDiff;
+        
+        
+    }
+}
