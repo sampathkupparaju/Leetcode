@@ -1,0 +1,44 @@
+1. Get the inordere traversal of the tree.
+2. Get the index of L and R values 
+3. Iterate between those values and get the sum
+
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int rangeSumBST(TreeNode root, int L, int R) {
+        Stack<TreeNode> result = new Stack<>();
+        ArrayList<Integer> x = new ArrayList<>();
+        while(root!=null || !result.isEmpty())
+        {
+            while(root!=null)
+            {
+                result.push(root);
+                root = root.left;
+            }
+            root = result.pop();
+            x.add(root.val);
+            root=root.right;
+        }
+        int sum =0;
+        int i = x.indexOf(L);
+        //sum = sum +L;
+        int j = x.indexOf(R);
+        
+       while(i<=j)
+       {
+           sum = sum+x.get(i);
+           i++;
+           
+       }
+        return sum;
+    }
+}
