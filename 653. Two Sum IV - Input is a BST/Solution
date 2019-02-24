@@ -1,0 +1,42 @@
+1. Traverse the tree in inorder fashion.
+2. Put the values in a hashmap. Check each time if we have a key of k-root.value
+3. Return false in all other cases.
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean findTarget(TreeNode root, int k) {
+        if(root ==null)
+            return false;
+        HashMap<Integer, Integer> result = new HashMap<>();
+Stack<TreeNode> s = new Stack<>();
+        int i=0;
+        while(root!=null || !s.isEmpty())
+        {
+            while(root!=null)
+            {
+                s.push(root);
+                root= root.left;
+            }
+            
+            root = s.pop();
+            if(result.containsKey(k-root.val))
+                return true;
+            result.put(root.val, i);
+            root = root.right;
+            
+        }
+      
+        return false;
+        
+        
+    }
+}
