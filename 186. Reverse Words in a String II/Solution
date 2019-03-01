@@ -1,0 +1,52 @@
+1. First reverse the entire array.
+2. Find each occurance of space. Pass it as an argument to a helper method to reverse the word before that space.
+3. Reverse the last word at last.
+
+
+class Solution {
+    public void reverseWords(char[] str) {
+        
+        
+    //StringBuilder sb = new StringBuilder();
+        for(int i= 0;i< str.length/2;i++)
+        {
+            char temp = str[i];
+            str[i]= str[str.length -i -1];
+            str[str.length -i -1] = temp;
+            
+        }
+      int start =0;
+       // int end =1;
+        for(int i=0;i< str.length;i++)
+        {
+         if(str[i]==' ')
+            {
+                Solution.reverse(str, start, i-1);
+               start = i+1;
+              
+            }
+           
+           
+        }
+        
+        
+  //last word is not reversed yet
+        
+        
+        Solution.reverse(str, start, str.length-1);
+        
+    }
+    public static void reverse(char[] str, int s, int e)
+    {
+        for(;s<=e/2;s++)
+        {
+            char temp = str[s];
+            str[s]= str[e-s];
+            str[e] = temp;
+
+        }
+    }
+    
+    
+
+}
