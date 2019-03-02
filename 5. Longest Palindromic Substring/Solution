@@ -1,0 +1,53 @@
+1. Minimum number would be the length of the String.
+2. Create an array to store results.
+3. Can be divided into 2 categories. String's length less than 3 and greater than 3.
+4. For string's length less than 3 it is just enough to check for the equality of chars at i and j.
+5. For string's length greater than 3, we have to check the equality of chars at i and j. In addition we have to check if 
+   the string between i+1 and j-1 to be a palindrome.
+6. Return the string with max length by updating each time.
+
+
+
+
+
+class Solution {
+    public String longestPalindrome(String s) {
+        String subString = "";
+        if(s == "")
+            return subString;
+        int len = s.length();
+        
+        boolean result[][] = new boolean[len][len];
+       
+        
+        for(int i = len - 1; i >= 0; i--) // started at the end because we initially have no idea of [i+1][j-1].
+                                        
+        {
+            
+            for (int j = i; j < len; j++)
+            {
+                if(j-i<3)       //because for strings like "aba"  and "ab" we need not check the middle character just the equality of chars at i and j
+                                // String where i==j like "a" will always be a palindrome
+                {
+                    if(s.charAt(i)==s.charAt(j))
+                    result[i][j]= true;
+                    
+                }
+                else 
+                {                   // for strings like "abad" we check for boolean value of "ba" to see if it is a palindrome and the equality of chars at i and j
+                    if(result[i+1][j-1] && s.charAt(i)==s.charAt(j))
+                        result[i][j]= true;
+                   
+                }
+                
+    if(result[i][j] && (subString == null || subString.length() < j-i+1))// update the length of maximum string each time instead of having a different loop.
+            subString = s.substring(i,j+1);
+               
+        }
+        }
+        
+        
+        return subString;
+        
+    }
+}
