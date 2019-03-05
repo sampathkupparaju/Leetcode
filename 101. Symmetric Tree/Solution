@@ -1,0 +1,36 @@
+1.	Recursive way and iterative way.
+2. Brute force would be level order traversal of the tree and comparing the elements in each array list. Problem arises when null 
+  values or when there is no child node for a root node. Comparing would be difficult. Time complexity would be o(n) + o(n^2)
+3. Iterative way could be done by using Queue 
+        i. Add root.left and root.right to the queue.
+       ii. Then add root.left.left and root.right.right, then root.left.right and root.right.left so that we can compare the 
+      iii. values of the nodes when polling.
+            Compare the values of TreeNodes in the queue while queue size is greater than 1
+
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+      if(root == null)
+            return true;
+        Queue<TreeNode> result = new LinkedList<>();
+        result.add(root.left);
+        result.add(root.right);
+        while(result.size()>1)
+        {
+            TreeNode l = result.poll();
+            TreeNode r= result.poll();
+            if(l==null && r== null)
+               continue;
+            if(l==null || r== null)
+                return false;
+            if(l.val!=r.val)
+                return false;
+            
+             
+            result.add(l.left);
+            result.add(r.right);
+            result.add(l.right);
+            result.add(r.left);
+        }
+        
+        
+        return true;
