@@ -1,0 +1,65 @@
+Sliding window method.
+
+Iterate through the second string an dstore each char's count in a hashmap.
+Start itertating through the given string and decrement each char's count as we move forward.
+In another loop while the count of hashmap is greater than 0 increment each char's count that has been decremented previously.
+While doing this if the substring's length matches the required anagram's length, add the starting index to result.
+
+
+
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> result = new ArrayList<>();
+        
+    
+        if(p.length()>s.length())
+            return result;
+        HashMap<Character, Integer> map = new HashMap<>();
+        char [] p1 = p.toCharArray();
+       // char [] s1 = s.toCharArray();
+        for(int i=0;i<p1.length;i++)
+        {
+            map.put(p1[i],map.getOrDefault(p1[i],0)+1);
+        }
+        
+       
+        int begin =0;
+        int end =0;
+        int counter = map.size();
+        
+    
+        while(end< s.length())
+        {
+            char temp = s.charAt(end);
+           if(map.containsKey(temp))
+           { 
+              
+               map.put(temp, map.get(temp)-1);
+                if(map.get(temp)==0)
+                   counter--;
+              
+               
+           }
+            end++;
+            
+            while(counter ==0)
+            {
+               char temp2 = s.charAt(begin);
+                if(map.containsKey(temp2))
+                {
+                    map.put(temp2, map.get(temp2)+1);
+                     if(map.get(temp2)>0)
+                     {
+                        counter++;
+                     }
+                }
+            
+            if(end-begin == p.length())
+                result.add(begin);
+            
+            begin++;
+            }
+        }
+return result;
+    }
+}
