@@ -1,0 +1,37 @@
+This is a recursive solution.
+
+Create a helper method that adds root's value to an empty string and iterates through root.left and root.right
+If we reach the leaf node add that corresponding path to the array list.
+
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<String> binaryTreePaths(TreeNode root) {
+        ArrayList<String> paths = new ArrayList<>();
+        if(root == null)
+            return paths;
+        helper(root, "", paths);
+        return paths;
+        
+       
+    }
+    
+    public void helper(TreeNode root, String path , ArrayList<String> paths )
+    {
+        if (root == null) return; 
+        if(root.left==null && root.right ==null)
+            paths.add(path +root.val);
+        helper(root.left,path + root.val + "->", paths);
+        helper(root.right,path+ root.val  + "->", paths);
+            
+    } 
+}
