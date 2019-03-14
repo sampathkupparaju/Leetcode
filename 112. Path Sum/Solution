@@ -1,0 +1,38 @@
+This would be different if the root node can any of its child nodes.
+
+
+In this case I wanted to create a helper method but found that to be useless.
+1. If the root is null return false
+2. Recurse in the left and right subtrees and subtract the root values from sum
+3. Once we reach the leaf node check to see if the leaf's value is equal to the sum remaining.
+
+
+
+
+
+
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean hasPathSum(TreeNode root, int sum) {
+        if(root ==null)
+            return false;
+         if(root.left ==null && root.right ==null && root.val ==sum)
+            return true;
+      // hasPathSum( root, sum-root.val);
+ 
+       
+         return hasPathSum(root.left, sum - root.val ) ||
+        hasPathSum(root.right, sum - root.val);
+      
+    }
+}
