@@ -1,0 +1,49 @@
+Very ineffective method
+
+1. add all possible paths. Each path a string
+2. Parse the value and return the sum.
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int sumNumbers(TreeNode root) {
+        
+       ArrayList<String> paths = new ArrayList<>();
+        if(root == null)
+            return 0;
+        
+        helper(root, "", paths);
+        int sum =0;
+        for(String p : paths)
+        {
+            sum += Integer.parseInt(p);
+        }
+        return sum;
+       
+    }
+    
+       	
+	 	
+
+    public void helper(TreeNode root, String path , ArrayList<String> paths )
+    {
+        if (root == null) return; 
+        if(root.left==null && root.right ==null)
+            paths.add(path +root.val);
+        //root = root.left;
+        helper(root.left,path + root.val, paths);
+        helper(root.right,path+ root.val, paths);
+            
+    }
+    
+    
+    
+}
