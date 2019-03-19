@@ -1,0 +1,50 @@
+
+We know how to find subarrays with atmost K  distinct integers. 
+Finding difference between subarrays with atmost K distinct integers and k-1 distinct integers gives subarrays with k distinct ints. 
+
+Create a hashmap to store the character as key and its count as value.
+Start at the beginning of the string. Increment each character's count.
+only when each characters count is 1, increment a count varibale until it reaches k.
+Once it reaches K, we see that the distinct  character's count is increased. 
+Once it is greater than K, Start at the beginning again with "start" variable, decrement each characters count.
+
+
+
+class Solution {
+    public int subarraysWithKDistinct(int[] A, int K) {
+        
+      return subarraysWithatmostKDistinct(A, K ) - subarraysWithatmostKDistinct(A, K-1);
+    }
+    
+
+    
+   int subarraysWithatmostKDistinct(int[] A, int K)  {
+    
+      int start =0;
+        int end =0;
+        int counter =0;
+        int result =0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        while(end < A.length)
+        {
+            map.put(A[end], map.getOrDefault(A[end],0)+1);
+            if(map.get(A[end]) == 1)
+                counter++;
+            end++;
+           
+            while(counter>K)
+            {
+                map.put(A[start], map.get(A[start])-1);
+                if(map.get(A[start]) ==0)
+                    counter--;
+            start++;
+            }
+            
+            result += end-start+1;
+           
+        }
+        
+        return result;
+  }
+
+}
