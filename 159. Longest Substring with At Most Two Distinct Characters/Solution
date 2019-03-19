@@ -1,0 +1,48 @@
+Sliding window method..
+
+
+Create a hashmap to store the character as key and its count as value.
+Start at the beginning of the string. Increment each character's count.
+only when each characters count is 1, increment a count varibale until it reaches k.
+Once it reaches K, we see that the distinct  character's count is increased. Hence Start at the beginning again with "start" variable.
+Once it is greater than K,
+
+
+
+
+
+class Solution {
+    public int lengthOfLongestSubstringTwoDistinct(String s) {
+        
+        HashMap<Character, Integer> map = new HashMap<>();
+        
+        int start =0;
+        int end =0;
+        int len =0;
+        int counter =0;
+      
+        while(end<s.length())
+        {
+            char temp = s.charAt(end);
+            map.put(s.charAt(end), map.getOrDefault(s.charAt(end), 0)+1);
+            if(map.get(temp)==1)
+                counter++;
+            end++;
+            
+            while(counter>2){
+                char temp2 = s.charAt(start);
+                map.put(temp2, map.get(temp2)-1);
+                if(map.get(temp2)==0)
+                   counter--;
+                
+                start++;
+            }
+            
+           len = Math.max(len, end- start);   
+            
+        }
+      
+        return len;
+        
+    }
+}
