@@ -4,8 +4,9 @@ Sliding window method..
 Create a hashmap to store the character as key and its count as value.
 Start at the beginning of the string. Increment each character's count.
 only when each characters count is 1, increment a count varibale until it reaches k.
-Once it reaches K, we see that the distinct  character's count is increased. Hence Start at the beginning again with "start" variable.
-Once it is greater than K,
+Once it reaches K, we see that the distinct  character's count is increased. 
+Once it is greater than K, Start at the beginning again with "start" variable, decrement each characters count.
+
 
 
 
