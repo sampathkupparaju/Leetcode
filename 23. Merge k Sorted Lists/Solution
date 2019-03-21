@@ -1,0 +1,46 @@
+1. My solution is by using PriorityQueue.
+2. Override the default comparator method.
+3. Add each node head to the priority Queue.
+4. Once the size reaches K, pop the node and assign it to result listnode.
+5. Since we pop the queue, it is off by one element. Add current.next to the queue if it is not null. This is the only extra step.
+
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+       if (lists==null || lists.length==0) return null;
+        
+        ListNode dummyHead = new ListNode(0);
+        ListNode current = dummyHead;
+        PriorityQueue<ListNode> result = new PriorityQueue<ListNode>(lists.length, (a,b)-> a.val-b.val );
+        
+        
+        for(ListNode node : lists )
+        {
+            if(node!=null)
+            result.add(node);
+            
+        }
+        while(!result.isEmpty())
+        {
+            current.next = result.poll();
+            current = current.next;
+           
+            if(current.next!=null){ // This is where PQ size comes to play. 
+                System.out.println(current.next.val);
+            result.add(current.next);
+             
+            }
+        }
+        return dummyHead.next;
+        
+    }
+}
