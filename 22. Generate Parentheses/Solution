@@ -1,0 +1,30 @@
+This problem is solved using recursion.
+
+The  idea is there are left and right paranthesis of equal number. 
+We have to open or (have a left paranthesis) if we were to close or (use a right one).
+Keep using the left paranthesis while it is greater than 0;
+At the same time if left < right keep using right paranthesis and once if both left and right reaches 0 add it to arraylist
+
+
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        ArrayList<String> result = new ArrayList<>();
+        generatedParanthesis(n, n, "",result);
+        
+        
+        return result;
+    }
+    
+    void generatedParanthesis(int left, int right, String parant,  ArrayList<String> result )
+    {
+        
+        if(left ==0 && right ==0)
+            result.add(parant);
+        if(left>0)
+            generatedParanthesis(left-1, right, parant +"(", result);
+        if(left<right)
+            generatedParanthesis(left, right-1, parant + ")", result);
+        
+    
+    }
+}
