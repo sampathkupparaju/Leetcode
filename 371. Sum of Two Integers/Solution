@@ -1,0 +1,29 @@
+Bit manipulation.
+
+1. If we use XOR between two binary numbers we get result as if they were added except for a carry.
+
+For example,
+
+      0010
+    + 1000
+      1010
+2. Now for carry if we use & between two binary numbers we get a result which needs to be shifted left once. 
+3. Left shift and add it to what we have after using XOR.
+4. Repeat this until the carry shifted left after each iteration becomes 0
+
+
+
+class Solution {
+    public int getSum(int a, int b) {
+        
+        
+        while(b!=0)
+        {
+            int carry = a & b;
+            a = a^b;
+            b = carry << 1;
+            
+        }
+        return a;
+    }
+}
