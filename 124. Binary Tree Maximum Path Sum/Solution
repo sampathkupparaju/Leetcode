@@ -1,0 +1,40 @@
+Recursive solution.
+
+
+
+1. The first step we can think of is how we compare between the left and right subtreees and sum it up and return the max sum.
+This can be written as 
+
+int left = Math.max(path(node.left), 0);
+int right = Math.max(path(node.right), 0);
+
+2. We have to compare the max sum every time by storing it and comparing each time.
+
+maxValue = Math.max(maxvalue, left + right + node.val);
+
+3. For each node we have to make a decision of going either through left or right sub tree.
+
+return node.val + Math.max(left,right);
+
+
+class Solution {
+    int maxValue = Integer.MIN_VALUE;
+    public int maxPathSum(TreeNode root) {
+       path(root); 
+       return maxValue; 
+    }
+    
+    
+    
+    public int path(TreeNode node)
+    {
+        if(node == null)
+            return 0;
+      int left = Math.max(0, path(node.left));
+        int right = Math.max(0,path(node.right));
+        maxValue = Math.max(left+right+node.val, maxValue);
+        
+        return Math.max(left, right) + node.val ;
+    }
+    
+
