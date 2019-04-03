@@ -1,0 +1,38 @@
+Intial approach was converting each node to a number and then adding them and returning a new node with the sum.
+This creates an overhead of converting each node to a number and back to a node.
+To avoid this, try to add each digit as you go and maintain a carry variable and add it to sum each time.
+At the end check to see if the carry is carried to the last number for cases like 1 + 99999999
+
+
+
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+          ListNode one = l1;
+      ListNode two = l2;
+        //int sum =0;
+        int carry =0;
+        ListNode result = new ListNode (0);
+        ListNode dummy = result;
+        while(one!=null || two!=null)
+        {
+            int x = one!=null ? one.val :0;
+            int y = two!=null ? two.val : 0;
+            int sum = carry + x+y;
+            carry = sum /10;
+            dummy.next = new ListNode(sum%10);
+            dummy = dummy.next;
+            if(one!=null)
+                one = one.next;
+            if(two!=null)
+            two = two.next;
+            
+            
+        }
+        
+        
+        if(carry>0)
+            dummy.next = new ListNode(carry);
+        
+        return result.next;
+    }
+}
