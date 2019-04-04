@@ -1,5 +1,6 @@
 Since it is sorted. we can just change the pointers to point to next node.
-One interseting thing I obersved is 
+One interesting thing I obersved is how if we dont check for temp!=null improved my efficiency from 22% to 100%.
+
 
 /**
  * Definition for singly-linked list.
