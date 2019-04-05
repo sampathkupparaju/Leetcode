@@ -1,0 +1,44 @@
+How do you determine if a leaf is left or right.
+Just check to see the left node of every node to see if it is a leaf node.
+First see if the left node is not null
+  then see the left and right nodes of the left node are null. If true add it to sum
+  else repeat the process for the left subtree.
+  Then repeat the process for the right subtree
+  
+  
+
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int sumOfLeftLeaves(TreeNode root) {
+     int sum =0;
+        
+       if(root ==null)
+           return 0;
+        if(root.left!=null)
+        {
+            if(root.left.left==null && root.left.right ==null)
+                sum+=root.left.val;
+            else
+                sum+=sumOfLeftLeaves(root.left);
+            
+        }
+        sum+=sumOfLeftLeaves(root.right);
+        return sum;
+        
+    
+    }
+    
+    
+    
+    
+}
