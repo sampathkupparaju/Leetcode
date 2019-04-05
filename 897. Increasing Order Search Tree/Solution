@@ -1,0 +1,47 @@
+Since the tree is a BST, we can traverse the tree in an inorder fashion to get a sorted array.
+Create a new tree with only right nodes.
+
+
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode increasingBST(TreeNode root) {
+      ArrayList<Integer> x = new ArrayList<>(); 
+        if(root == null)
+            return null;
+        Stack<TreeNode> result = new Stack<>();
+        while(root!=null || !result.isEmpty())
+        {
+            while(root!=null)
+            {
+                result.push(root);
+                root = root.left;
+                
+            }
+            root = result.pop();
+            x.add(root.val);
+            root = root.right;   
+        }
+
+        
+        
+        TreeNode previous = new TreeNode(0);
+        TreeNode current = previous;
+        for(int v: x)
+        {
+            System.out.println(v);
+            current.right = new TreeNode(v);
+            current = current.right;
+        }
+        return previous.right;
+    }
+}
