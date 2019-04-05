@@ -1,0 +1,39 @@
+This is a variation of finding lowest common ancestor of BST.
+
+1. In this case, check to see if the current node is equal to either of the nodes or equal to null, 
+    then we return root.
+ 2. Recurse on the left subtree to find the common ancestor. This returns a treenode 'l'.
+ 3. Recurse on the right subtree. This retursn a treenode 'r'.
+ 4. If either is null return the other node.
+ 5. For all the other cases return root.
+ 
+ 
+ /**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+     
+        if(root ==null || root.val == p.val || root.val == q.val)
+            return root;
+      
+        TreeNode l = lowestCommonAncestor(root.left, p, q);
+        TreeNode r = lowestCommonAncestor(root.right, p, q);
+       
+        if(l==null)
+            return r;
+        else if (r==null)
+            return l;
+    
+        return root;
+        
+        
+    }
+}
+    
