@@ -1,0 +1,53 @@
+My First idea was to get the intersection of two nodes and start checking the similarity from then on.
+
+
+This idea was based on preorder traversal of two trees.
+Only in preorder traversal you can compare two trees, only problem is dealing with null values since two different trees could have
+the same traversal result.
+
+like
+    2                     2
+      \        AND       /  
+        3               3       could result in 2,3 in either cases
+        
+ This could be avoided by adding some indication when we reach a null value.
+ Compare the two strings resulted.
+ 
+ 
+ 
+ /**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean isSubtree(TreeNode s, TreeNode t) {
+        
+        StringBuilder s1 = new StringBuilder();
+        StringBuilder s2 = new StringBuilder();
+       preTraversal(s, s1);
+      preTraversal(t, s2);
+        System.out.println(s1 + " new " + s2);
+        return s1.indexOf(s2.toString())!=-1;
+    }
+    
+    public void preTraversal(TreeNode s, StringBuilder sb)
+    {
+        
+        if(s==null)
+        {
+            sb.append("x");
+            return;
+        }
+        
+        sb.append(" " + s.val + " ");
+        preTraversal(s.left, sb);
+        preTraversal(s.right, sb);
+        
+    
+    }
+}
