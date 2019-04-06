@@ -1,0 +1,50 @@
+This is a DFS solution
+
+
+There were two things that I have to be careful about this approach.
+1. The loop
+2. Writing a recursive function with particular color that needs to be filled.
+
+
+1. Store the color at sr and sc as color.
+2. Iterate through the image and wherever the color macthes with new color and if its in bounds change it.
+3. If the image already has newColor at given sr and sc, return image.
+4. Perform marking at [i+1, j] , [i, j+1], [i-1, j], [i,j-1]
+
+
+class Solution {
+    public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+        
+        for(int i=0;i< image.length;i++)
+        {
+            for(int j=0;j<image[0].length;j++)
+            {
+               if (i==sr && j == sc)
+               {
+                   int color = image[i][j];
+                   if(image[sr][sc]==newColor)
+                       return image;
+                   mark(image, i, j, color, newColor);
+                  
+               }
+            }
+        }
+        return image;
+    }
+    
+    
+    
+    public void mark(int[][] image, int sr, int sc, int color, int newColor)
+    {
+        if(sr<0 || sr>=image.length || sc<0 || sc>=image[0].length || image[sr][sc]!=color)
+            return;
+        if(image[sr][sc]==color)
+        image[sr][sc]=newColor;
+        mark(image, sr+1, sc,color ,newColor);
+        mark(image, sr, sc+1,color, newColor);
+        mark(image, sr-1, sc, color,newColor);
+        mark(image, sr, sc-1,color, newColor);
+        
+    }
+    
+}
