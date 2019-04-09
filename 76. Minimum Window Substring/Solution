@@ -1,0 +1,59 @@
+1. First step would be converting the target string into hashmap.
+2. Start at the beginning of source string. Keep a pointer at the start. 
+    Move a second pointer and as you move update the character count of the source string in the hashmap.
+    If the hashmap size becomes zero, we start the first pointer and update the quantity of each character in hashmap.
+    We track this length as well to see if there are any minimum strings in the future.
+3. Return the string between these two lengths.
+
+
+
+class Solution {
+    public String minWindow(String s, String t) {
+        
+        HashMap<Character, Integer> result = new HashMap<>();
+        
+        int start =0;
+        int end =0;
+        int len=Integer.MAX_VALUE;
+        int begin =0;
+       // int len =0;
+        for(int i=0;i< t.length();i++)
+        {
+            char temp = t.charAt(i);
+            result.put(temp, result.getOrDefault(temp,0)+1);
+        }
+        int counter = result.size();
+        while(end< s.length())
+        {
+            char temp = s.charAt(end);
+            if(result.containsKey(temp)){
+                result.put(temp, result.get(temp)-1);
+                if(result.get(temp)==0)
+                    counter-=1;
+            }
+            end++;
+            
+            while(counter==0)
+            {
+                char temp2 = s.charAt(start);
+                if(result.containsKey(temp2)){
+                    result.put(temp2, result.get(temp2)+1);
+                    if(result.get(temp2)>0)
+                        counter++;
+                    }
+                
+           if(len >end-start)
+           {
+               len = end-start;
+               begin = start;
+           }
+                
+                
+            start++;
+        }
+        }
+        if(len == Integer.MAX_VALUE) return "";
+        return s.substring(begin, begin+len);
+        
+    }
+}
