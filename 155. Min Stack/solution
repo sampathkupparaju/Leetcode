@@ -1,7 +1,10 @@
 This is a stack implementation 
 Only addition is finding the minimum element in the stack dynamically as we add new elements into the stack.
 I tried doing that but felt that handling it as two seperate functions is much easier.
-So I added all the elements and then iterated through the stack to find the minumjum value.
+So I added all the elements and then iterated through the stack to find the minumum value.
+
+This has to be implemented using two stacks.
+
 
 
 
