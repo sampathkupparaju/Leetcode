@@ -1,0 +1,43 @@
+
+This problem is one of classic backtracking algorithms.
+What we need to do is at each index we have the option of choosing a particular element or not.
+So at index 0 we start with not choosing that element. 
+
+
+
+		       {}	do not chose  1---{}  do not chose 2 ---{}
+		     /			     \  chose 2             --{2}	
+{1,2} ------>   {}   
+		      \
+	                        Chose 1                ----{1} do not chose 2 – {1}
+					   \ chose 2 	 -----   {1, 2}
+
+At each index we have a choice. So we call the helper method twice one with choosing an element and the other by not choosing the element.
+
+
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        
+      List<List<Integer>> result = new ArrayList<>();
+        if(nums.length==0)
+            return result;
+        helper(result, nums, new ArrayList<Integer>(), 0);
+        return result;
+        
+    }
+    
+    
+    public void helper(List<List<Integer>> result, int [] nums, ArrayList<Integer> temp, int start)
+    {
+        
+        if (start == nums.length){
+            result.add(new ArrayList<>(temp));
+            return;
+        }
+            helper(result, nums, temp, start+1);
+            temp.add(nums[start]);
+            helper(result, nums,temp,  start+1);
+            temp.remove(temp.size()-1); ///Still did not understand why the element has to be removed.
+
+    
+            
