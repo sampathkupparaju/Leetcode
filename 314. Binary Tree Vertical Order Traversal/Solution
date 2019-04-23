@@ -1,0 +1,50 @@
+This is the same as level order traversal. But the difference comes in placing the left and right nodes in a particular column.
+We have two hashmaps one for column and arraylist for that column
+the other for treenode and what column it is at in the tree.
+The tracking of minimum values is essential because hashmap does not preserve the order of keys while inserting.
+So, if we want the left most column and then start iterating we have to know about the minimum value;
+
+
+ class Solution {
+    public List<List<Integer>> verticalOrder(TreeNode root) {
+       List<List<Integer>> result = new ArrayList<>();
+        Queue<TreeNode> traverse = new LinkedList<>();
+        if(root ==null)
+            return result;
+        HashMap<TreeNode, Integer> map = new HashMap<>();
+        HashMap<Integer, ArrayList<Integer>> map2 = new HashMap<>();
+        
+        traverse.offer(root);
+        map.put(root,0);
+       int min =0;
+        while(!traverse.isEmpty())
+        {
+            TreeNode current = traverse.poll();
+            
+            int w = map.get(current);
+            if(!map2.containsKey(w))
+                map2.put(w, new ArrayList<>());
+            map2.get(w).add(current.val);
+            
+            if(current.left!=null)
+            {
+                traverse.offer(current.left);
+                map.put(current.left, w-1 );
+            }
+            if(current.right!=null)
+            {
+                traverse.offer(current.right);
+                map.put(current.right, w+1);
+            }
+             
+            min = Math.min(min,w);
+        }
+       while(map2.containsKey(min))
+       {
+           result.add(map2.get(min++));
+       }
+        
+        return result;
+        
+    }
+}
