@@ -1,0 +1,43 @@
+Check every transformation and note down the number of iterations.
+The two conditions that are crucial here are 
+   1. If the character at a number for both the strings is equal. If that is the case the count to reach present iteration would be
+      the same as previous itertaion.
+   2. Else it is minimum of three operations.
+The key here is memoization.
+
+
+
+class Solution {
+    public int minDistance(String word1, String word2) {
+        
+        int a = word1.length();
+        int b = word2.length();
+        int [][] result = new int[a+1][b+1];
+        for(int i=0;i<a+1;i++)
+        {
+            result[i][0] = i;
+        }
+        for(int j=0;j<b+1;j++)
+        {
+            result[0][j] = j;
+        }
+        
+        
+        for(int i=1;i<a+1;i++)
+        {
+            for(int j=1;j<b+1;j++)
+            {
+                if(word1.charAt(i-1)==word2.charAt(j-1))
+                    result[i][j] =  result[i-1][j-1];
+                else
+                    result[i][j] = 1+ Math.min(result[i-1][j], Math.min(result[i][j-1], result[i-1][j-1]));
+            }
+        }
+        
+        return result[a][b];
+        
+    }
+}
+   
+   
+ 
