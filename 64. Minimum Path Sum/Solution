@@ -1,0 +1,24 @@
+Only thing we have to worry about it is when either of the indices is 0.
+If that is the case we just calculate values for the other index. So if i is 0 we calculate for j and vice versa
+and only when i and j are not 0 we calculate for both
+
+
+class Solution {
+    public int minPathSum(int[][] grid) {
+        int m = grid.length;
+        int n = grid[0].length;
+        for(int i=0;i<m;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                if(i==0 && j!=0)
+                    grid[i][j] = grid[i][j] + grid[i][j-1];
+                if(i!=0 && j==0)
+                    grid[i][j] = grid[i-1][j] + grid[i][j];
+                if(i!=0 && j!=0)
+                    grid[i][j] = Math.min(grid[i-1][j], grid[i][j-1])+ grid[i][j];
+            }
+        }
+        return grid[m-1][n-1];
+    }
+}
