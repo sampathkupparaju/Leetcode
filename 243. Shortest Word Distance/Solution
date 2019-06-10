@@ -1,0 +1,28 @@
+Initial idea HashMap. Could be used but no need to store all words occurances.
+
+Initially my idea was to find all the occurances of the words and store them in two arrraylists, one for each word.
+Then sort the array and find the minimum difference between these two.
+
+
+Since we are iterating through the array in ascending order, we can store mindifference and update just like we do it in case sorted.
+
+
+class Solution {
+    public int shortestDistance(String[] words, String word1, String word2) {
+        
+    int one = -1, two = -1, minDifference = Integer.MAX_VALUE;
+    for(int i=0;i<words.length;i++)
+    {
+        if(words[i].equals(word1))
+            one =i;
+        if(words[i].equals(word2))
+            two =i;
+        if(one!=-1 && two !=-1)
+          minDifference = Math.min(minDifference, Math.abs(one-two));
+    }
+        return minDifference;
+        
+        
+    }
+}
+
