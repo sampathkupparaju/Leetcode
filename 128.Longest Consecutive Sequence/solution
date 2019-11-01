@@ -1,0 +1,51 @@
+Brute force approach was to sort and then update the longest streak while iterating through the array.
+
+We could optimise this by using hashmap or hashset.
+1. We add every element to hashset.
+2. Iterate through the set and find the element with no predecessor.
+3. Once you find such element find its streak.
+4. repeat.
+
+
+This actually runs in o(n) time complexity. 
+So if there are 3 streaks(completely different) we would iterate thrice instead of 9 times.
+
+
+
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        
+        HashSet<Integer> set = new HashSet<>();
+        for(int x : nums)
+        {
+            set.add(x);
+        }
+        
+        
+        int longestStreak = 0;
+        for(int num : set)
+        {
+            if(!set.contains(num-1))
+            {
+                int current = num;
+                
+                int currentStreak =0;
+                
+                while(set.contains(current))
+                {
+                    current+=1;
+                    currentStreak+=1;
+                    longestStreak = Math.max(currentStreak, longestStreak);
+                }
+            }
+            
+            
+            
+        }
+        
+        return longestStreak;
+        
+        
+       
+    }
+}
