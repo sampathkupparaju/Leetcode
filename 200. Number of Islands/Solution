@@ -41,3 +41,57 @@ class Solution {
         }
     }
 }
+
+
+
+
+
+
+
+
+/// Minimum number of hours
+
+
+ int minimumHours(int row, int columns, List<List<Integer>> grid) {
+	Queue<int[]> q = new LinkedList<>();
+	int target = row*columns;
+	int cnt = 0, res = 0;
+    int[][] grid2 = new int[row][columns]
+    for(int i=0;i<row;i++)
+    {
+    for(int j=0;j<columns;j++)
+    {
+    grid2[i][j] = grid.get(i).get(j);
+    }}
+    
+    
+    
+	for(int i=0;i<grid2.length;i++) {
+		for(int j=0;j<grid2[0].length;j++) {
+			if(grid2[i][j] == 1) {
+				q.offer(new int[] {i,j});
+				cnt++;
+			}
+		}
+	}
+	int[][] dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+	while(!q.isEmpty()) {
+		int size = q.size();
+		if(cnt == target)
+			return res;
+		for(int i=0;i<size;i++) {
+			int[] cur = q.poll();
+			for(int[] dir : dirs) {
+				int ni = cur[0] + dir[0];
+				int nj = cur[1] + dir[1];
+				if(ni >=0 && ni < grid2.length && nj >=0 && nj < grid2[0].length && grid2[ni][nj] == 0) {
+					q.offer(new int[] {ni, nj});
+					grid2[ni][nj] = 1;
+                    cnt++;
+				}
+			}
+		}
+		res++;
+	}
+	return -1;
+}
